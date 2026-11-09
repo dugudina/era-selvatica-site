@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Era Selvática | Site Oficial</title>
+  <meta name="description" content="Era Selvática - Banda de Pop, Rock e Flashbacks para casamentos, eventos corporativos e festas.">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #101010;
+      color: #f7f4ee;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    main {
+      width: min(100% - 2rem, 62rem);
+      margin: 0 auto;
+      padding: clamp(2rem, 6vh, 4rem) 0;
+    }
+
+    header, figcaption {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .5rem 1.5rem;
+    }
+
+    header {
+      border-bottom: 1px solid #484643;
+      padding-bottom: 1.2rem;
+      margin-bottom: 1.4rem;
+    }
+
+    h1, h2, p, figure { margin: 0; }
+
+    h1 {
+      font-size: clamp(2.3rem, 6.8vw, 4.8rem);
+      letter-spacing: -.065em;
+      line-height: 1.05;
+      font-weight: 800;
+    }
+
+    header p {
+      color: #dedbd6;
+      font-size: .875rem;
+      font-weight: 600;
+      letter-spacing: .035em;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      background: #050505;
+      object-fit: contain;
+    }
+
+    figcaption {
+      padding-top: 1rem;
+      color: #bab7b2;
+      font-size: .9rem;
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      letter-spacing: -.02em;
+      color: #f7f4ee;
+    }
+
+    a { color: inherit; }
+
+    @media (max-width: 38rem) {
+      header, figcaption { flex-direction: column; }
+      header { gap: .7rem; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>ERA SELVÁTICA</h1>
+      <p>Pop • Rock • Flashbacks</p>
+    </header>
+
+    <figure>
+      <video controls playsinline preload="metadata" width="1920" height="1080"
+             poster="assets/capa.jpg" aria-labelledby="titulo-video">
+        <source src="assets/projecao-era-selvatica.mp4" type="video/mp4">
+        <a href="assets/projecao-era-selvatica.mp4">Abrir o vídeo Projeção em MP4</a>
+      </video>
+      <figcaption>
+        <h2 id="titulo-video">Projeção</h2>
+        <p>Nosso novo site está chegando!</p>
+      </figcaption>
+    </figure>
+  </main>
+</body>
+</html>
