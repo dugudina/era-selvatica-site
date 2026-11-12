@@ -3,103 +3,104 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark">
-  <title>Era Selvática | Site Oficial</title>
-  <meta name="description" content="Era Selvática - Banda de Pop, Rock e Flashbacks para casamentos, eventos corporativos e festas.">
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: #101010;
-      color: #f7f4ee;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    main {
-      width: min(100% - 2rem, 62rem);
-      margin: 0 auto;
-      padding: clamp(2rem, 6vh, 4rem) 0;
-    }
-
-    header, figcaption {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: .5rem 1.5rem;
-    }
-
-    header {
-      border-bottom: 1px solid #484643;
-      padding-bottom: 1.2rem;
-      margin-bottom: 1.4rem;
-    }
-
-    h1, h2, p, figure { margin: 0; }
-
-    h1 {
-      font-size: clamp(2.3rem, 6.8vw, 4.8rem);
-      letter-spacing: -.065em;
-      line-height: 1.05;
-      font-weight: 800;
-    }
-
-    header p {
-      color: #dedbd6;
-      font-size: .875rem;
-      font-weight: 600;
-      letter-spacing: .035em;
-    }
-
-    video {
-      display: block;
-      width: 100%;
-      height: auto;
-      aspect-ratio: 16 / 9;
-      background: #050505;
-      object-fit: contain;
-    }
-
-    figcaption {
-      padding-top: 1rem;
-      color: #bab7b2;
-      font-size: .9rem;
-      line-height: 1.5;
-    }
-
-    h2 {
-      font-size: 1.2rem;
-      letter-spacing: -.02em;
-      color: #f7f4ee;
-    }
-
-    a { color: inherit; }
-
-    @media (max-width: 38rem) {
-      header, figcaption { flex-direction: column; }
-      header { gap: .7rem; }
-    }
-  </style>
+  <title>Era Selvática | Banda para casamentos e eventos</title>
+  <meta name="description" content="Banda ao vivo para casamentos e eventos corporativos em Campinas, Indaiatuba, Sorocaba e região. Pop, Classic Rock, Flashbacks e hits atuais.">
+  <link rel="stylesheet" href="style.css">
+  <script src="preview.js" defer></script>
 </head>
 <body>
-  <main>
-    <header>
-      <h1>ERA SELVÁTICA</h1>
-      <p>Pop • Rock • Flashbacks</p>
-    </header>
-
-    <figure>
-      <video controls playsinline preload="metadata" width="1920" height="1080"
-             poster="assets/capa.jpg" aria-labelledby="titulo-video">
-        <source src="assets/projecao-era-selvatica.mp4" type="video/mp4">
-        <a href="assets/projecao-era-selvatica.mp4">Abrir o vídeo Projeção em MP4</a>
-      </video>
-      <figcaption>
-        <h2 id="titulo-video">Projeção</h2>
-        <p>Nosso novo site está chegando!</p>
-      </figcaption>
-    </figure>
+  <main id="inicio">
+    <section class="opening wrap" aria-labelledby="chamada">
+      <div class="hero-copy">
+        <h1 id="chamada">Banda ao vivo para <em>casamentos e eventos corporativos</em></h1>
+        <p class="opening-repertoire">Pop, Classic Rock, Flashbacks e hits atuais para a sua festa.</p>
+        <p class="opening-location">Shows em Campinas, Indaiatuba, Sorocaba e região, com opção de estrutura completa de som e iluminação.</p>
+      </div>
+    </section>
+    <section class="section introduction wrap" aria-labelledby="sua-festa">
+      <h2 id="sua-festa">A sua festa merece ter o seu gosto musical.</h2>
+      <p>Bom mesmo é ouvir aquela sequência de músicas que tem tudo a ver com você, certo? E, se a festa é sua, é assim que tem que ser.</p>
+      <p>Imagine sua celebração com a sua trilha sonora ao vivo.</p>
+      <p>A Banda Era Selvática veste o Classic Rock, o Pop atemporal e os Flashbacks que ninguém esquece. Aquele som que faz parte da sua história tem que fazer parte da sua festa.</p>
+      <p>A Era Selvática levará para o palco da sua festa um repertório com variedade, energia e conexão com a sua personalidade.</p>
+      <p>Escolha uma banda que combina com você. Escolha uma banda que gosta do que você gosta.</p>
+    </section>
+    <section id="banda" class="section wrap" aria-labelledby="sobre">
+      <div class="woven-row">
+      <div class="woven-media performance">
+        <video muted playsinline loop preload="none" poster="assets/Performance.jpg" aria-label="Trecho de uma apresentação da Era Selvática">
+          <source src="assets/Performance.mp4" type="video/mp4">
+        </video>
+      </div>
+        <div class="woven-copy">
+        <h2 id="sobre">Sucessos que atravessam gerações</h2>
+          <p>A banda apresenta um show vibrante que reúne grandes sucessos nacionais e internacionais que marcaram diferentes épocas.</p>
+          <p>Nosso repertório percorre os flashbacks inesquecíveis, o pop dos anos 80, clássicos do rock e sucessos modernos, criando uma experiência musical envolvente para públicos de todas as idades.</p>
+          <p>Dos hits marcantes de artistas como ABBA, A-ha, Queen, Bon Jovi, RPM, Titãs, Bruno Mars, Lady Gaga e muitos outros, nosso show combina energia, nostalgia e músicas que todos reconhecem desde a primeira nota.</p>
+          <p class="lineup">Sete integrantes, com uma vocalista, um vocalista, dois guitarristas, um tecladista, um baixista e um baterista.</p>
+        </div>
+      </div>
+    </section>
+    <section id="eventos" class="section wrap">
+      <div class="section-label">Eventos</div>
+      <div class="event-list">
+        <article class="woven-row">
+          <video muted playsinline loop preload="none" poster="assets/dancinha.jpg" aria-label="Registro do público dançando">
+            <source src="assets/dancinha.mp4" type="video/mp4">
+          </video>
+          <div class="woven-copy">
+            <h2>Casamentos</h2>
+          <p>Um show para celebrar com as músicas que marcaram a história de vocês e colocar convidados de todas as idades na pista.</p>
+          </div>
+        </article>
+        <article class="woven-row reverse">
+          <video muted playsinline loop preload="none" poster="assets/Publico.jpg" aria-label="Registro do público em um show">
+            <source src="assets/Publico.mp4" type="video/mp4">
+          </video>
+          <div class="woven-copy">
+            <h2>Eventos corporativos</h2>
+          <p>Música ao vivo para confraternizações e celebrações da empresa, com repertório e formato alinhados ao evento.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section id="estrutura" class="section wrap">
+      <div class="section-label">Estrutura</div>
+      <div class="woven-row">
+        <div>
+          <h2>Som, iluminação e palco</h2>
+          <p>A Era Selvática conta com estrutura própria para o show, com backline para os músicos, sonorização para o público, estrutura de fundo de palco e iluminação computadorizada.</p>
+        </div>
+        <video muted playsinline loop preload="none" poster="assets/timelapse.jpg" aria-label="Timelapse da montagem da estrutura da Era Selvática">
+          <source src="assets/timelapse.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+    <section id="contato" class="contact">
+      <div class="wrap woven-row">
+        <div>
+          <h2>Vamos falar sobre seu evento?</h2>
+          <p>Consulte disponibilidade e solicite um orçamento.</p>
+          <a class="button" href="https://wa.me/5511991605387">Conversar no WhatsApp ↗</a>
+        </div>
+        <address>
+          <a href="tel:+5511991605387">(11) 99160-5387</a>
+          <a href="mailto:eraselvatica@gmail.com">eraselvatica@gmail.com</a>
+          <a href="https://www.instagram.com/bandaeraselvatica/">Instagram ↗</a>
+          <a href="https://www.youtube.com/@EraSelvatica">YouTube ↗</a>
+        </address>
+      </div>
+    </section>
   </main>
+  <footer class="wrap footer">
+    <video class="closing-video" muted playsinline loop preload="none" poster="assets/capa-projecao.jpg" aria-label="Projeção com o logotipo da Era Selvática">
+      <source src="assets/projecao.mp4" type="video/mp4">
+    </video>
+    <section id="cidades" aria-labelledby="cidades-titulo">
+      <h2 id="cidades-titulo">Levamos esse som para a sua festa.</h2>
+      <p>Campinas, Indaiatuba, Valinhos, Vinhedo, Paulínia, Jaguariúna, Hortolândia, Sumaré, Americana, Salto, Itu, Itupeva, Jundiaí, Tatuí, Sorocaba, Barueri, Osasco e região.</p>
+      <p>Seu evento será em outra cidade? <a href="#contato">Fale com a gente para consultar disponibilidade e deslocamento.</a></p>
+    </section>
+  </footer>
 </body>
 </html>
