@@ -1,0 +1,247 @@
+:root {
+  color-scheme: dark;
+  --background: #101010;
+  --white: #f7f4ee;
+  --muted: #ccc;
+  --red: #ff565a;
+  --header-logo-height: calc(clamp(5rem, 12vw, 11rem) * 1.84);
+}
+
+* { box-sizing: border-box; }
+body {
+  position: relative;
+  isolation: isolate;
+  margin: 0;
+  background: var(--background);
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url("assets/faixa-cabecalho.png") repeat center top / clamp(42rem, 100vw, 90rem) auto;
+  filter: grayscale(1) invert(1) contrast(1.5);
+  opacity: .055;
+}
+
+.site-header {
+  position: relative;
+  background: #cf101c;
+}
+
+.header-pattern {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.site-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgb(0 0 0 / 58%) 60%, var(--background));
+}
+
+.header-logo {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: clamp(.5rem, 3vw, 3rem);
+  width: auto;
+  height: var(--header-logo-height);
+  filter: brightness(0) invert(1);
+}
+
+.wrap { width: min(100% - 3rem, 76rem); margin-inline: auto; }
+a { color: var(--red); text-underline-offset: .22em; }
+a:focus-visible, video:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
+
+.opening {
+  position: relative;
+  z-index: 1;
+  padding: calc(var(--header-logo-height) + clamp(1.5rem, 4vw, 2.5rem)) 6% 1rem;
+}
+h1, h2 { margin: 0; }
+h1 { max-width: 900px; font-size: clamp(43px, 6.8vw, 86px); letter-spacing: -.065em; line-height: 1.05; font-weight: 800; }
+.opening-tagline { margin: .65rem 0 0; color: #ffd2d3; font-size: clamp(1.3rem, 3.4vw, 2.65rem); font-weight: 700; line-height: 1.2; }
+h2 { font-size: clamp(30px, 3.2vw, 45px); line-height: 1.12; letter-spacing: -1px; }
+p { margin: 15px 0; color: var(--muted); line-height: 1.7; }
+.opening-repertoire { max-width: 35ch; margin: 24px 0 8px; color: var(--white); font-size: clamp(1.35rem, 3vw, 2rem); font-weight: 700; line-height: 1.25; }
+.section.introduction {
+  padding: clamp(2rem, 5vw, 4rem) 0;
+  background: linear-gradient(to bottom, rgb(16 16 16 / 30%) 65%, var(--background)),
+    url("assets/fundo-pista-roxa.jpg") center 46% / cover no-repeat var(--background);
+}
+
+.introduction .wrap { padding-inline: 6%; }
+.introduction p { max-width: 68ch; }
+
+.band {
+  background: linear-gradient(to bottom, rgb(16 16 16 / 58%) 45%, var(--background)),
+    url("assets/fundo-palco-ambar.jpg") center 40% / cover no-repeat var(--background);
+}
+
+.band p { max-width: 68ch; }
+
+.section, .contact { padding-block: 64px; }
+.section-label { margin-bottom: 22px; color: var(--red); font-weight: 700; }
+.woven-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 6vw, 90px); align-items: center; }
+.woven-media { min-width: 0; }
+video { display: block; width: 100%; height: auto; max-height: 560px; background: #050505; object-fit: contain;
+  --fade-horizontal: linear-gradient(90deg, transparent, black 3%, black 97%, transparent);
+  --fade-vertical: linear-gradient(0deg, transparent, black 3%, black 97%, transparent);
+  -webkit-mask-image: var(--fade-horizontal), var(--fade-vertical);
+  -webkit-mask-composite: source-in;
+  mask-image: var(--fade-horizontal), var(--fade-vertical);
+  mask-composite: intersect;
+}
+.opening-video { width: min(100%, 315px); margin: 1.5rem auto 0; }
+.performance video, .reverse video { width: min(100%, 315px); margin-inline: auto; aspect-ratio: 9 / 16; }
+.event-list { display: grid; gap: clamp(35px, 8vw, 90px); }
+.reverse video { order: 2; }
+.lineup { color: var(--white); }
+
+.contact { border-top: 1px solid #484643; }
+.button { display: inline-block; padding: 15px 22px; background: var(--red); color: #100d0e; font-weight: 700; text-decoration: none; border-radius: 3px; }
+address { display: grid; gap: .7rem; justify-items: start; font-style: normal; }
+
+.footer { padding-block: 35px 50px; }
+.closing-video { aspect-ratio: 16 / 9; max-height: none; }
+#cidades { padding-top: clamp(28px, 5vw, 55px); }
+#cidades h2 { font-size: clamp(26px, 3vw, 32px); }
+
+.repertoire-list {
+  margin: 1.5rem 0 0;
+  border-bottom: 1px solid #484643;
+}
+
+.repertoire-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1rem, 5vw, 4rem);
+  padding: clamp(1.1rem, 2.8vw, 2rem) 0;
+  border-top: 1px solid #484643;
+}
+
+.repertoire-row dt {
+  font-family: inherit;
+  font-size: clamp(1.25rem, 2.6vw, 2.15rem);
+  font-weight: 700;
+  line-height: 1.18;
+}
+
+.repertoire-row dd {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+@media (max-width: 680px) {
+  :root {
+    --header-logo-height: clamp(7rem, 32vw, 9.2rem);
+  }
+
+  .wrap { width: calc(100% - 2rem); }
+  .opening {
+    padding-inline: 0;
+  }
+
+  h1 {
+    font-size: clamp(1.95rem, 7.4vw, 3rem);
+    letter-spacing: -.04em;
+    line-height: 1.1;
+  }
+
+  h2 { font-size: clamp(1.55rem, 5.6vw, 2rem); }
+  .opening-repertoire { margin-top: 1rem; }
+  .section.introduction { background-position: center top; }
+  .introduction .wrap { padding-inline: 0; }
+  .section, .contact { padding-block: 2rem; }
+
+  .woven-row, .repertoire-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .woven-row { gap: 1.25rem; }
+  .reverse video { order: 0; }
+  .repertoire-row { gap: .4rem; }
+  .contact .button { display: block; text-align: center; }
+  address a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    overflow-wrap: anywhere;
+  }
+}
+
+.repertoire-stage {
+  padding-block: clamp(2rem, 6vh, 4rem);
+  background:
+    linear-gradient(rgb(16 16 16 / 24%), rgb(16 16 16 / 24%)),
+    url("assets/fundo-repertorio.jpg") center / auto 100% no-repeat #101010;
+}
+
+.repertoire.is-scrolling {
+  min-height: calc(100svh + var(--repertoire-distance));
+}
+
+.is-scrolling .repertoire-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: .75rem;
+  padding-block: clamp(1rem, 5vh, 3rem);
+}
+
+.is-scrolling .repertoire-window {
+  position: relative;
+  overflow: clip;
+}
+
+.is-scrolling .repertoire-list {
+  position: relative;
+  top: 50%;
+  display: grid;
+  grid-auto-rows: 1fr;
+  margin: 0 auto;
+  border: 0;
+}
+
+.is-scrolling .repertoire-row {
+  color: #fff;
+}
+
+.is-scrolling .repertoire-row dd {
+  color: inherit;
+}
+
+.social-icon {
+  width: 1.25em;
+  height: 1.25em;
+  flex: none;
+}
+
+.contact .button,
+.contact a:has(.social-icon) {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+@media (max-width: 680px) {
+  .contact .button {
+    display: flex;
+    justify-content: center;
+  }
+}
