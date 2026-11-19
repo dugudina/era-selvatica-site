@@ -4,15 +4,6 @@ const list = section.querySelector(".repertoire-list");
 const groups = Array.from(list.children);
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
 
-function repeatGroup(group) {
-  const copy = group.cloneNode(true);
-  copy.setAttribute("aria-hidden", "true");
-  return copy;
-}
-
-const before = groups.slice(-3).map(repeatGroup);
-const after = groups.slice(0, 3).map(repeatGroup);
-const visibleGroups = [...before, ...groups, ...after];
 let rowHeight = 0;
 let frame = 0;
 
@@ -21,13 +12,12 @@ function render() {
   if (!rowHeight) return;
 
   const progress = Math.min(groups.length - 1, Math.max(0, -section.getBoundingClientRect().top / rowHeight));
-  const active = Math.round(progress) + before.length;
-  const position = progress + before.length;
+  const active = Math.round(progress);
 
-  list.style.transform = `translateY(${-(position + 0.5) * rowHeight}px)`;
+  list.style.transform = `translateY(${-(progress + 0.5) * rowHeight}px)`;
 
-  visibleGroups.forEach((group, index) => {
-    const distance = Math.abs(index - position);
+  groups.forEach((group, index) => {
+    const distance = Math.abs(index - progress);
     group.style.opacity = index === active ? "1" : String(Math.max(0, 0.55 - distance * 0.19));
   });
 }
@@ -46,15 +36,10 @@ function configure() {
     rowHeight = 0;
     list.style.removeProperty("transform");
     for (const group of groups) group.style.removeProperty("opacity");
-    for (const copy of [...before, ...after]) copy.remove();
     return;
   }
 
-  if (!section.classList.contains("is-scrolling")) {
-    list.prepend(...before);
-    list.append(...after);
-    section.classList.add("is-scrolling");
-  }
+  section.classList.add("is-scrolling");
   measure();
 }
 
