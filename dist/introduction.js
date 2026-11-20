@@ -1,20 +1,14 @@
 const introduction = document.querySelector('.introduction');
 const introductionParts = introduction.querySelectorAll('.wrap > *');
 const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
-const backgroundEnd = 0.36;
+const introStops = [0, .21, .32, .45, .59, .72, .85, 1];
+const clampReveal = value => Math.min(1, Math.max(0, value));
+const revealBetween = (position, start, end) => clampReveal((position - start) / (end - start));
 
 let frameId = 0;
 
 function drawIntroduction() {
   frameId = 0;
-  if (CSS.supports('animation-timeline', 'view()')) {
-    const sectionTop = introduction.getBoundingClientRect().top + window.scrollY;
-    const offset = Math.max(0, window.innerHeight - sectionTop);
-    introduction.style.setProperty('--intro-scroll-offset', `${offset}px`);
-    introduction.style.setProperty('--intro-scroll-distance', `${Math.max(1, window.innerHeight * .75 - offset)}px`);
-    return;
-  }
-
   if (motionPreference.matches) {
     introduction.style.removeProperty('--intro-background');
     introductionParts.forEach(part => part.style.removeProperty('--intro-reveal'));
@@ -25,15 +19,11 @@ function drawIntroduction() {
   const availableTop = introduction.getBoundingClientRect().top + window.scrollY;
   const startAt = Math.max(0, availableTop - viewportHeight);
   const finishAt = Math.max(startAt + 1, availableTop - viewportHeight * 0.25);
-  const scrollProgress = Math.min(1, Math.max(0, (window.scrollY - startAt) / (finishAt - startAt)));
-  const progress = scrollProgress * (2 - scrollProgress);
-
-  introduction.style.setProperty('--intro-background', Math.min(1, progress / backgroundEnd));
-
-  const textProgress = (progress - backgroundEnd) / (1 - backgroundEnd);
+  const progress = revealBetween(window.scrollY, startAt, finishAt);
+  introduction.style.setProperty('--intro-background', revealBetween(progress, 0, introStops[1]));
   introductionParts.forEach((part, index) => {
-    const reveal = Math.min(1, Math.max(0, textProgress * introductionParts.length - index));
-    part.style.setProperty('--intro-reveal', reveal);
+    const reveal = revealBetween(progress, introStops[index + 1], introStops[index + 2]);
+    part.style.setProperty('--intro-reveal', reveal * (2 - reveal));
   });
 }
 
@@ -44,6 +34,7 @@ function scheduleIntroduction() {
 drawIntroduction();
 window.addEventListener('scroll', scheduleIntroduction, { passive: true });
 window.addEventListener('resize', scheduleIntroduction);
+motionPreference.addEventListener('change', scheduleIntroduction);
 new ResizeObserver(scheduleIntroduction).observe(document.querySelector('.site-header'));
 const pianoAnimations = document.querySelector('.header-piano').getAnimations();
 const scrollRoot = document.documentElement;

@@ -349,7 +349,34 @@ video { display: block; width: 100%; height: auto; max-height: 560px; background
 .button { display: inline-block; padding: 15px 22px; background: var(--red); color: #100d0e; font-weight: 700; text-decoration: none; border-radius: 3px; }
 address { display: grid; gap: .7rem; justify-items: start; font-style: normal; }
 
-.footer { padding-block: 35px 50px; }
+.footer > section {
+  padding-block: clamp(2.75rem, 6vw, 5.5rem);
+  background-size: cover;
+}
+
+.footer #cidades {
+  background-image:
+    linear-gradient(to bottom, #101010 0%, rgb(16 8 22 / 78%) 28%, rgb(16 8 22 / 74%) 74%, #101010 100%),
+    url("assets/fundo-pista-roxa.jpg");
+  background-position: center, center 35%;
+}
+
+.footer #estrutura {
+  background-image:
+    linear-gradient(to bottom, #101010 0%, rgb(22 13 8 / 78%) 30%, rgb(22 13 8 / 74%) 74%, #101010 100%),
+    url("assets/fundo-palco-ambar.jpg");
+  background-position: center, center 28%;
+}
+
+
+.service-cities {
+  display: grid;
+  gap: .5rem;
+  margin-block: 1rem;
+  padding-inline-start: 1.15rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
 .closing-video { aspect-ratio: 16 / 9; max-height: none; }
 #cidades { padding-top: clamp(28px, 5vw, 55px); }
 #cidades h2 { font-size: clamp(26px, 3vw, 32px); }
@@ -494,13 +521,18 @@ address { display: grid; gap: .7rem; justify-items: start; font-style: normal; }
 
 
 .section.events {
-  padding-block: clamp(1.4rem, 4vw, 3rem) clamp(2.75rem, 8vw, 6rem);
+  display: flow-root;
+  padding-block: 0 clamp(2.75rem, 8vw, 6rem);
+  scroll-margin-top: max(0px, calc(25.5vw - 60px));
   background:
     linear-gradient(#390603, transparent 10%, transparent 88%, var(--background)),
     url("assets/eventos/fundo.jpg") center / cover no-repeat #390603;
 }
 
 .events-inner {
+  position: relative;
+  /* The album covers occupy the upper portion of the transition image. */
+  margin-top: calc(40px - 25.5vw);
   width: min(80%, 62rem);
   margin-inline: auto;
 }
@@ -634,67 +666,53 @@ address { display: grid; gap: .7rem; justify-items: start; font-style: normal; }
   margin-inline: auto;
 }
 
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .introduction {
-      view-timeline-name: --intro-view;
-      --intro-scroll-offset: 0px;
-      --intro-scroll-distance: 75svh;
-      --intro-fade-end: calc(var(--intro-scroll-offset) + var(--intro-scroll-distance) * .21);
-    }
-    .band { view-timeline-name: --band-view; }
 
-    .introduction::before,
-    .band::before {
-      animation: section-backdrop 1ms linear both;
-    }
-
-    .introduction::before {
-      animation-timeline: --intro-view;
-      animation-range: cover var(--intro-scroll-offset, 0px) cover var(--intro-fade-end);
-    }
-    .band::before { animation-timeline: --band-view; animation-range: cover 0px cover 16svh; }
-
-    .introduction .wrap > *,
-    .band-copy > * {
-      animation: section-copy 1ms ease-out both;
-      animation-timeline: var(--section-view);
-      animation-range: cover var(--reveal-start) cover var(--reveal-end);
-    }
-
-    .introduction .wrap { --section-view: --intro-view; }
-    .band-copy { --section-view: --band-view; }
-
-    .band-piece {
-      animation: section-copy 1ms ease-out both;
-      animation-timeline: --band-view;
-      animation-range: cover var(--reveal-start) cover var(--reveal-end);
-    }
-
-    .band-guitar { animation-name: band-guitar-entry; }
-    .band-bass { animation-name: band-bass-entry; }
-    .band-seal { animation-name: band-seal-entry; }
-
-    html.header-assembling .introduction::before,
-    html.header-assembling .introduction .wrap > * { visibility: hidden; }
-    .introduction .wrap > *:nth-child(1) { --reveal-start: var(--intro-fade-end); --reveal-end: calc(var(--intro-scroll-offset) + var(--intro-scroll-distance) * 0.32); }
-    .introduction .wrap > *:nth-child(2) { --reveal-start: calc(var(--intro-scroll-offset) + var(--intro-scroll-distance) * 0.32); --reveal-end: calc(var(--intro-scroll-offset) + var(--intro-scroll-distance) * 0.45); }
-    .introduction .wrap > *:nth-child(3) { --reveal-start: calc(var(--intro-scroll-offset) + var(--intro-scroll-distance) * 0.45); --reveal-end: calc(var(--intro-scroll-offset) + var(--intro-scroll-distance) * 0.59); }
-    .introduction .wrap > *:nth-child(4) { --reveal-start: calc(var(--intro-scroll-offset) + var(--intro-scroll-distance) * 0.59); --reveal-end: calc(var(--intro-scroll-offset) + var(--intro-scroll-distance) * 0.72); }
-    .introduction .wrap > *:nth-child(5) { --reveal-start: calc(var(--intro-scroll-offset) + var(--intro-scroll-distance) * 0.72); --reveal-end: calc(var(--intro-scroll-offset) + var(--intro-scroll-distance) * 0.85); }
-    .introduction .wrap > *:nth-child(6) { --reveal-start: calc(var(--intro-scroll-offset) + var(--intro-scroll-distance) * 0.85); --reveal-end: calc(var(--intro-scroll-offset) + var(--intro-scroll-distance) * 1); }
-    .band-piece:nth-child(1) { --reveal-start: 16svh; --reveal-end: 23svh; }
-    .band-piece:nth-child(2) { --reveal-start: 23svh; --reveal-end: 30svh; }
-    .band-piece:nth-child(3) { --reveal-start: 30svh; --reveal-end: 37svh; }
-    .band-copy > *:nth-child(1) { --reveal-start: 37svh; --reveal-end: 45svh; }
-    .band-copy > *:nth-child(2) { --reveal-start: 45svh; --reveal-end: 55svh; }
-    .band-copy > *:nth-child(3) { --reveal-start: 55svh; --reveal-end: 65svh; }
-    .band-copy > *:nth-child(4) { --reveal-start: 65svh; --reveal-end: 75svh; }
-  }
+.service-header,
+.service-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem 1.25rem;
 }
 
-@keyframes section-backdrop { from { opacity: 0; } }
-@keyframes section-copy { from { opacity: 0; transform: translateY(1rem); } }
-@keyframes band-guitar-entry { from { opacity: 0; transform: translateX(-65%); } }
-@keyframes band-bass-entry { from { opacity: 0; transform: translateX(65%); } }
-@keyframes band-seal-entry { from { opacity: 0; transform: scale(3.4); } }
+.service-header {
+  justify-content: space-between;
+  align-items: baseline;
+  padding-block: 1.25rem;
+  border-bottom: 1px solid rgb(255 255 255 / 18%);
+}
+
+.service-header > a {
+  color: var(--white);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.service-page {
+  padding-block: clamp(2rem, 6vw, 5rem);
+}
+
+.service-hero {
+  display: grid;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.service-hero h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.08;
+}
+
+.service-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.service-page section {
+  max-width: 68ch;
+  margin-block: 2rem;
+}
+
+@media (min-width: 760px) {
+  .service-hero { grid-template-columns: 1fr 1fr; }
+}
